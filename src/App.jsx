@@ -1,22 +1,25 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-// import './App.css'
-import NavBar from "./components/NavBar";
-import Hero from "./components/Hero";
-import HomeCrads from "./components/HomeCrads";
-import JobListings from "./components/JobListings";
-import ViewAllJobs from "./components/viewAllJobs";
+import {
+  Router,
+  RouterProvider,
+  createBrowserRouter,
+  createRoutesFromElements,
+  Route,
+} from "react-router-dom";
+import MainLayout from "./layout/MainLayout";
+import HomePage from "./pages/HomePage";
 
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/" element={<MainLayout />}>
+      <Route index element={<HomePage />} />
+    </Route>
+  )
+);
 
 function App() {
   return (
     <>
-      <NavBar />
-      <Hero />
-      <HomeCrads />
-      <JobListings />
-      <ViewAllJobs />
+      <RouterProvider router={router} />
     </>
   );
 }
